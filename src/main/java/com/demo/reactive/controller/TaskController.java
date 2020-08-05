@@ -23,4 +23,12 @@ public class TaskController {
     public Mono<Task> addTask(@RequestBody Task task) {
         return this.taskService.addTask(task);
     }
+
+    @PutMapping("")
+    public Mono<Task> updateTask(@RequestBody Task task) { return this.taskService.updateTask(task); }
+
+    @DeleteMapping("/{id}")
+    public Mono<Void> deleteTask(@PathVariable Long id) {
+         return this.taskService.deleteTask(id);
+    }
 }

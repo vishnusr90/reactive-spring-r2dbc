@@ -20,4 +20,18 @@ public class TaskService {
     public Mono<Task> addTask(Task task) {
         return this.taskRepository.save(task);
     }
+
+    public Mono<Task> updateTask(final Task task) {
+        return this.taskRepository.findById(task.getId())
+                .flatMap(t -> {
+                    t.setCompleted(task.getCompleted());
+                    t.setDescription(task.getDescription());
+                    return this.taskRepository.save(t);
+                });
+    }
+
+    public Mono<Void> deleteTask(final Long id) {
+        return this.taskRepository.findById(id)
+                .flatMap(this.taskRepository::delete);
+    }
 }
