@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.time.Duration;
+
 @Service
 public class TaskService {
 
@@ -14,7 +16,9 @@ public class TaskService {
     private TaskRepository taskRepository;
 
     public Flux<Task> getAllTasks() {
-        return this.taskRepository.findAll().switchIfEmpty(Flux.empty());
+        return this.taskRepository.findAll()
+                .delayElements(Duration.ofSeconds(2))
+                .switchIfEmpty(Flux.empty());
     }
 
     public Mono<Task> addTask(Task task) {
