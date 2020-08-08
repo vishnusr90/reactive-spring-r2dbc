@@ -2,6 +2,10 @@
 
 ## Sample project using java, r2dbc and spring boot
 
+Hit GET http://localhost:8080/api/tasks
+
+The response will be returned in real time with any blocking
+
 ### Set up of local MariaDB 
 
 Start MariaDB 
