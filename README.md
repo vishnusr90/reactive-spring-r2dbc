@@ -4,7 +4,7 @@
 
 Hit GET http://localhost:8080/api/tasks
 
-The response will be returned in real time with any blocking
+The response will be returned in real time without  any blocking
 
 ### Set up of local MariaDB 
 
